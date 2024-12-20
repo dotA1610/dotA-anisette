@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y ca-certificates
 # Build for builder
 WORKDIR /opt/
 COPY . .
+RUN dub install plist
 RUN DC=ldc2 dub build -c "static" --build-mode allAtOnce -b release --compiler=ldc2
 
 # Base for run
